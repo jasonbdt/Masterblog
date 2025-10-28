@@ -17,3 +17,13 @@ def save_posts(posts: list[dict]):
             print("Posts saved to file storage")
     except FileNotFoundError:
         print("Error: File not found")
+
+
+def fetch_post_by_id(post_id: int) -> Optional[dict]:
+    posts = get_blog_posts()
+    post = list(filter(lambda post: post['id'] == post_id, posts))
+
+    if post:
+        return post[0]
+
+    return None

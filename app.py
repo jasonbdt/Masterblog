@@ -46,13 +46,11 @@ def add() -> Union[str, Response]:
 
 @app.route('/delete/<int:post_id>')
 def delete(post_id: int) -> Union[str, Response]:
-    blog_posts: list[dict] = utils.get_blog_posts()
-    post_to_delete = list(
-        filter(lambda post: post['id'] == post_id, blog_posts)
-    )
+    blog_posts = utils.get_blog_posts()
+    post = utils.fetch_post_by_id(post_id)
 
-    if post_to_delete:
-        blog_posts.remove(post_to_delete[0])
+    if post:
+        blog_posts.remove(post)
         print(f'Blog post with ID {post_id} deleted.')
         utils.save_posts(blog_posts)
 
@@ -62,6 +60,19 @@ def delete(post_id: int) -> Union[str, Response]:
         'index.html',
         posts=blog_posts,
         form_error=f"No post found with ID {post_id}")
+
+
+@app.route('/delete/<int:post_id>', methods=['GET', 'POST'])
+def delete(post_id: int) -> Union[str, tuple[str, int], Response]:
+    post = utils.fetch_post_by_id(post_id)
+
+    if post is None:
+        return "Post not found", 404
+
+    if request.method == 'POST':
+        pass
+
+    return render_template('update.html', post=post)
 
 
 if __name__ == '__main__':
