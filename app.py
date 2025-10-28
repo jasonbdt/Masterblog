@@ -65,12 +65,21 @@ def delete(post_id: int) -> Union[str, Response]:
 @app.route('/update/<int:post_id>', methods=['GET', 'POST'])
 def update(post_id: int) -> Union[str, tuple[str, int], Response]:
     post = utils.fetch_post_by_id(post_id)
+    blog_posts = utils.get_blog_posts()
 
     if post is None:
         return "Post not found", 404
 
     if request.method == 'POST':
-        pass
+        post_to_update = blog_posts.index(post)
+        blog_posts[post_to_update].update({
+            "title": request.form.get('title', post['title']),
+            "author": request.form.get('author', post['author']),
+            "content": request.form.get('content', post['content'])
+        })
+        utils.save_posts(blog_posts)
+
+        return redirect(url_for('index'))
 
     return render_template('update.html', post=post)
 
