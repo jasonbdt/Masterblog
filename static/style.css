@@ -118,3 +118,34 @@ form div.submit button {
     border-radius: 6px;
     padding: 8px 24px;
 }
+
+.like-button {
+    display: inline-block;
+    text-decoration: none;
+    padding-right: 12px
+}
+
+.like-button .wrapper {
+    align-items: center;
+    column-gap: .475rem;
+    color: #222;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.like-button .wrapper span {
+    align-items: center;
+    border: 1px solid #666;
+    border-radius: 100%;
+    cursor: pointer;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+}
+
+.like-button span {
+    color: #ff0000;
+    height: fit-content;
+    user-select: none;
+}
