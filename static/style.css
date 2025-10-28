@@ -43,6 +43,27 @@ nav ul li {
     border-radius: 8px;
 }
 
+.post header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    border: 1px solid #222;
+    border-radius: 8px;
+    display: block;
+    cursor: pointer;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+.btn-danger {
+    background: rgba(239, 44, 44, 0.87);
+    border-color: rgb(61 13 13);
+    color: rgb(61 13 13);
+}
+
 .post h2 {
     margin-top: 0;
 }
