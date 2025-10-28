@@ -62,8 +62,8 @@ def delete(post_id: int) -> Union[str, Response]:
         form_error=f"No post found with ID {post_id}")
 
 
-@app.route('/delete/<int:post_id>', methods=['GET', 'POST'])
-def delete(post_id: int) -> Union[str, tuple[str, int], Response]:
+@app.route('/update/<int:post_id>', methods=['GET', 'POST'])
+def update(post_id: int) -> Union[str, tuple[str, int], Response]:
     post = utils.fetch_post_by_id(post_id)
 
     if post is None:
