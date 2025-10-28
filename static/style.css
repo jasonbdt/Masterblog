@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #F5F5F5;
@@ -8,6 +14,25 @@ body {
 h1 {
     text-align: center;
     color: #4F4F4F;
+    margin-bottom: 12px;
+}
+
+nav {
+    margin-bottom: 1.2rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: .75rem;
+    justify-content: center;
+}
+
+nav ul li {
+    cursor: pointer;
+    padding: 8px 12px;
+    font-weight: bold;
 }
 
 .post {
@@ -24,4 +49,39 @@ h1 {
 
 .post p {
     margin: 10px 0;
+}
+
+form > div {
+    display: flex;
+    column-gap: 1.2rem;
+    padding: 6px 36px;
+    align-items: center;
+}
+
+form > div label {
+    flex: 1 1 10%;
+    text-align: right;
+    font-weight: bold;
+}
+
+form > div input,
+form > div textarea {
+    flex: 1 1 90%;
+    border: 1px solid #c6c6c6;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+form div.submit {
+    justify-content: flex-end;
+}
+
+form div.submit button {
+    border: 1px solid #245308;
+    background: #60b62e;
+    color: #245308;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 8px 24px;
 }
