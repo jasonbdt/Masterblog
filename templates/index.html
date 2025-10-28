@@ -34,10 +34,10 @@
         <p><em>Written by {{post.author}}</em></p>
         <p>{{post.content}}</p>
         <footer>
-            <a class="like-button" href="#">
+            <a class="like-button" href="{{url_for('like', post_id=post.id)}}">
                 <div class="wrapper">
                     <span>&hearts;</span>
-                    <small>100 Likes</small>
+                    <small>{{post.likes}} Likes</small>
                 </div>
             </a>
         </footer>

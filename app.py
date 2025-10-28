@@ -33,7 +33,8 @@ def add() -> Union[str, Response]:
                 "id": blog_posts[-1]['id'] + 1,
                 "title": title,
                 "author": author,
-                "content": content
+                "content": content,
+                "likes": 0
             }
 
             blog_posts.append(new_blog_post)
@@ -82,6 +83,23 @@ def update(post_id: int) -> Union[str, tuple[str, int], Response]:
         return redirect(url_for('index'))
 
     return render_template('update.html', post=post)
+
+
+@app.route('/like/<int:post_id>')
+def like(post_id: int):
+    post = utils.fetch_post_by_id(post_id)
+    blog_posts = utils.get_blog_posts()
+
+    if post is None:
+        return "Post not found", 404
+
+    post_to_update = blog_posts.index(post)
+    blog_posts[post_to_update].update({
+        "likes": post['likes'] + 1
+    })
+    utils.save_posts(blog_posts)
+
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
